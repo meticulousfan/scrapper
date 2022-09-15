@@ -1,0 +1,82 @@
+{
+    "manifest_version": 2,
+    "name": "ntScraper - Telegram edition",
+    "version": "6.0",
+    "description": "Extract data from websites and web applications without leaving Chrome.",
+
+    "background": {
+        "scripts": [
+            "/third-party/date.format.js",
+            "/tasks/defaults.js",
+            "/tasks/tasks.js",
+            "/controller/main_loop.js",
+            "/controller/utilities.js",
+            "/controller/cache.js",
+            "/misc/telegram_notifications.js"
+        ],
+        "persistent" : false
+    },
+
+    "content_scripts": [{
+        "matches": [
+            "http://*/*",
+            "https://*/*",
+            "file://*/*"
+        ],
+        "js": [
+            "/third-party/date.format.js",
+            "/third-party/jquery-3.1.1.min.js",
+            "/scripts/utilities/text-utilities.js",
+            "/scripts/utilities/time-utilities.js",
+            "/scripts/utilities/telegram-utilities.js",
+            "/scripts/scrapeGoogleSearchResults.js",
+            "/scripts/scrapeTchannels.js",
+            "/scripts/scrapeTelegramChannels.js",
+            "/scripts/scrapeTsearch.js",
+            "/scripts/scrapeTlgrm.js",
+            "/selector-tools/script.js",
+            "/selector-tools/copy_injected.js",
+            "/scraper/page_actions.js",
+            "/scraper/type_injected.js",
+            "/scraper/loop_events.js",
+            "/scraper/main_loop.js",
+            "/import/script.js"
+        ],
+        "css": [
+            "/selector-tools/style.css"
+        ],
+        "all_frames": true,
+        "run_at": "document_start"
+    }],
+
+    "web_accessible_resources": [
+        "/selector-tools/copy_injected.js",
+        "/scraper/type_injected.js",
+        "/third-party/jquery-3.1.1.min.js"
+    ],
+
+    "permissions": [
+        "management",
+        "browsingData",
+        "background",
+        "tabs",
+        "activeTab",
+        "tabCapture",
+        "webNavigation",
+        "storage",
+        "unlimitedStorage",
+        "alarms",
+        "https://api.telegram.org/*"
+    ],
+
+    "browser_action": {
+        "default_popup": "/control-panel/index.html",
+        "default_icon": "/icons/icon.png"
+    },
+
+    "icons": {
+        "16": "/icons/icon16.png",
+        "48": "/icons/icon48.png",
+        "128": "/icons/icon128.png"
+    }
+}
